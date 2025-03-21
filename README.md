@@ -1,6 +1,6 @@
 # Puchumaldito
 
-Puchumaldito is a Ruby on Rails application using **Rails 4.2.1** and **Ruby 2.2.1**, previously deployed on **Heroku**.
+Puchumaldito was my first Blog using **Rails 4.2.1** and **Ruby 2.2.1**, previously deployed on **Heroku**.
 
 ## Prerequisites
 
