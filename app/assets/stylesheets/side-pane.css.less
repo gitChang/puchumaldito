@@ -1,0 +1,40 @@
+@import "custom-colors";
+@import "twitter/bootstrap/variables.less";
+
+.side-pane .panel { 
+  margin-bottom: 21px !important; 
+}
+
+.side-pane {
+  padding-top: 15px;
+  background-color: @wet-asphalt;
+
+  .list-unstyled { margin-bottom: 0; }
+
+  //.list-headers { font-weight: bold; }
+
+  .list-items { 
+    margin-left: 10px; 
+    font-size: 14px; 
+
+    a { 
+      color: lighten(@wet-asphalt, 30%); 
+      &:hover { color: @sun-flower; }
+    }
+  }
+
+  form {
+    position: relative;
+
+    input { 
+      padding-left: 35px; 
+    }
+
+    .fa.fa-search {
+      color: @wet-asphalt-light;
+      position: absolute;
+      left: 10px;
+      top: 7px;
+    }
+  }
+}

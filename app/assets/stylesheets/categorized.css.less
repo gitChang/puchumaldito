@@ -1,0 +1,29 @@
+@import "bootstrap_and_overrides.css.less";
+@import "custom-colors";
+
+.categorized {
+  .alert {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+
+    background-color: darken(@body-bg, 15%) !important;
+    color: @text-color;
+    text-align: center;
+  }
+
+  a.post-item { 
+    text-decoration: none; 
+    
+    &:hover { 
+      color: @brown-lighter;
+    }
+
+    .page-header { 
+      margin-top: 0; 
+      margin-bottom: 15px;
+    }
+  }
+}

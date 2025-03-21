@@ -1,0 +1,23 @@
+<div class="show container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 content">
+                <h1 class="page-header"><%= @post.title %></h1>
+                <%= @post.content.html_safe %>
+                
+                <!-- disqus comment box -->
+        		<div id="disqus_thread" class="y-offset-50"></div>
+            </div>
+        </div>
+        <%= render partial: 'partials/top_scroll' %>
+    </div>
+</div>
+<!-- initialize disqus -->
+<%= render partial: 'partials/disqus', locals: { created: @post.created_at } %>
+
+
+
+
+
+
+

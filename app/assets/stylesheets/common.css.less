@@ -1,0 +1,105 @@
+@import "bootstrap_and_overrides.css.less";
+@import "custom-colors";
+
+html.turbolinks-progress-bar::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1027;
+  background-color: orange !important;
+  height: 2px !important;
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.4);
+  -moz-box-shadow:    0px 0px 2px 0px rgba(50, 50, 50, 0.4);
+  box-shadow:         0px 0px 2px 0px rgba(50, 50, 50, 0.4);
+}
+
+html, body {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  -ms-font-smoothing: antialiased !important;
+  font-smoothing: antialiased !important;
+
+  height: 100%;
+}
+
+a { outline: none !important; }
+
+.index, .show, .categorized, .search {
+  // Using parallax.
+  position: relative;
+  z-index: 999;
+  margin-bottom: 512px;
+  background-color: @body-bg;
+  padding-bottom: 30px;
+
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.75);
+}
+
+.page-wrap {
+  border-top: 2px solid @text-color;
+  .pagination {
+    a { margin: 0 5px; }
+
+    .previous_page { margin-right: 20px; }
+    .next_page { margin-left: 20px; }
+    .current { color: orange; }
+  }
+}
+
+img.shot {
+  //-webkit-filter: sepia(1);
+  //filter: sepia(1);
+  max-width: 100%;
+}
+
+.color-trans {
+  -webkit-transition: color 400ms ease-out 0.1s;
+  -moz-transition: color 400ms ease-out 0.1s;
+  -o-transition: color 400ms ease-out 0.1s;
+  transition: color 400ms ease-out 0.1s;
+}
+
+.all-trans {
+  -webkit-transition: all 400ms ease-out 0.1s;
+  -moz-transition: all 400ms ease-out 0.1s;
+  -o-transition: all 400ms ease-out 0.1s;
+  transition: all 400ms ease-out 0.1s;
+}
+
+.y-offset-60 {
+  margin-top: 60px;
+}
+
+.y-offset-50 {
+  margin-top: 50px;
+}
+
+.y-offset-40 {
+  margin-top: 40px;
+}
+
+.y-offset-30 {
+  margin-top: 30px;
+}
+
+.y-offset-20 {
+  margin-top: 20px;
+}
+
+.y-offset-10 {
+  margin-top: 10px;
+}
+
+.no-mgb {
+  margin-bottom: 0;
+}
+
+.no-mg {
+  margin: 0;
+}
+
+.no-pad {
+  padding: 0;
+}

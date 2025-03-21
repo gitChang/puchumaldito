@@ -1,0 +1,47 @@
+<!--<div class="panel panel-default dark animated bounceInRight">
+    <div class="panel-body text-center">
+        <img src="/puchu-mikhail.png">
+        <ul class="list-inline y-offset-10 no-mgb">
+            <li>follow me: </li>
+            <li><a href="https://twitter.com/PuchuMikhail" href="_blank"><i class="fa fa-twitter-square fa-lg"></i></a></li>
+            <li><a href="https://www.facebook.com/puchupuchumikhail.kalashnikov" target="_blank"><i class="fa fa-facebook-square fa-lg"></i></a></li>
+        </ul>
+    </div>
+</div>-->
+<div class="panel panel-default dark animated bounceInRight">
+    <div class="panel-body">
+        <%= form_tag search_path, method: 'get', role: 'search' do %>
+                <%= search_field_tag 'keyword', 
+                        params[:keyword], 
+                        placeholder: 'secret finder', 
+                        maxlength: 20,
+                        autocomplete: :off,
+                        class: 'form-control input-sm input-block' %>
+                <i class="fa fa-search fa-flip-horizontal"></i>
+        <% end %>
+    </div>
+</div>
+<div class="panel panel-default dark animated bounceInRight">
+    <div class="panel-body">
+        <span class="list-headers">Categories</span>
+        <ul class="list-unstyled">
+            <% @categories.each do |category| %>
+            <li class="list-items"><a href="<%= categorize_path(category.downcase) %>"><%= category %></a></li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default dark animated bounceInRight">
+    <div class="panel-body">
+        <span class="list-headers">Recently Revealed</span>
+        <ul class="list-unstyled">
+            <% @recents.each do |recent| %>
+            <li class="list-items">
+                <a href="<%= detailed_path(recent.title.parameterize) %>">
+                    <%= recent.title %>
+                </a>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+</div>

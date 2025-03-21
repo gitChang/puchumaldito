@@ -1,0 +1,26 @@
+@import "bootstrap_and_overrides.css.less";
+@import "custom-colors";
+
+.show {
+  .content {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+
+    h1.page-header { margin-bottom: 30px; }
+
+    a { 
+      text-decoration: none;
+      border-bottom: 1px dashed @text-color;
+    }
+
+    // Fix BS takes over Prism styling on <pre> tag
+    pre {
+      overflow: auto;
+      word-wrap: normal;
+      white-space: pre;
+    }
+
+    img { max-width: 100%; }
+  }
+}

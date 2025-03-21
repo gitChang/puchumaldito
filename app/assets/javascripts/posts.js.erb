@@ -1,0 +1,112 @@
+<% url = Puchumaldito::Application.routes.url_helpers %>
+
+//-----------
+// Initialize Libraries
+//-----------
+$(document).on('ready page:load', function() {
+    // Show tiny progress bar
+    Turbolinks.enableProgressBar();
+
+    // Re-init Prism to avoid unstyled <pre> tag
+    Prism.highlightAll();
+
+    // Set the content height for footer to act like as static bottom.
+    //$(".content").css('min-height', screen.height - 43 + "px");
+
+    // Initialize WOW.js. Use to activate animation on scroll.
+    new WOW().init();
+});
+
+//-----------
+// Header Handler
+//-----------
+$(document).on('ready page:load', function() {    
+    $('#launch-se').click(function() {
+        $('#modal-search').modal();
+        setTimeout(function() {
+            $('input[name=keyword]').focus();
+        }, 500);
+    });
+
+    var typing_timer; // hols timeout object
+    var type_interval = 1000; // interval ajax request
+
+    $('input[name=keyword]').on('input', function() {
+        // clears the timeout object to avoid stuck request.
+        clearTimeout(typing_timer);
+
+        var keyword_text = $(this);    
+
+        if ( keyword_text.val().trim().length >= 3 )
+            // set timeout object
+            typing_timer = setTimeout(doneTypingCallBack, type_interval);
+
+        function doneTypingCallBack() {
+            $('.candidates').html('<h4 class="text-center"><i class="fa fa-circle-o-notch fa-spin fa-lg"></i></h4>');
+
+            var candidte_html, slug;
+
+            $.ajax({
+                url: '<%= url.search_posts_path %>',
+                dataType: 'json',
+                data: { keyword: keyword_text.val().trim() },
+                type: 'GET',
+                success: function(data) {
+                    if ( data.length !== 0 ) {
+                        $('.candidates').html(""); // clear the content
+                        for (var i = data.length - 1; i >= 0; i--) {
+                            // href value
+                            slug = data[i].title
+                                   .toLowerCase()
+                                   .replace(/[^a-zA-Z0-9\s]/g,'')
+                                   .replace(/\s/g,'-');
+
+                            candidte_html = "<a class='color-trans' href='/" + slug + "'><div class='candidate'>" + data[i].title + "</div></a>";
+                            $(candidte_html).appendTo( $('.candidates') );
+                        };
+                    } else $('.candidates').html('<h4 class="text-center">nothing tools &nbsp;:(</h4>');
+                    
+                }
+            });
+        }
+    });
+
+    // when form submit is triggered, redirect to the first candidate.
+    $('form[name=form-se]').on('submit', function(event) {
+        var href = $('.candidate').first().closest('a').attr('href');
+        Turbolinks.visit(href);
+        event.preventDefault();
+    });
+
+    // custom html for will_paginate
+    $('.previous_page').html('Prev'); // custom text for previous 
+    $('.previous_page.disabled').remove(); // remove previous if n/a
+    $('.next_page').html('Next'); // custom text for next
+    $('.next_page.disabled').remove(); // remove next if n/a
+    // remove paginate if page count is less than per-page
+    if ( $('.pagination').length === 0 ) $('.page-wrap').remove();
+});
+
+//-----------
+// Post.Show Handler
+//-----------
+$(document).on('ready page:load', function() {
+    // Use for smooth scrolling
+    $('a[href*=#]:not([href=#])').on('click', function() {
+        var loc_pathname = location.pathname.replace(/^\//,'');
+        var this_pathname = this.pathname.replace(/^\//,'');
+
+        if (loc_pathname == this_pathname && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top
+                }, 1000);
+                return false;
+            }
+        }
+    });    
+});

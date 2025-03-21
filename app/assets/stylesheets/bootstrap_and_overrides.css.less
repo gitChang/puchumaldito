@@ -1,0 +1,66 @@
+// Full import
+@import "twitter/bootstrap/bootstrap";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: font-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: font-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: font-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: font-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: font-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+// @import "twitter/bootstrap/glyphicons.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @link-color: #ff0000;
+
+@import "custom-colors";
+
+@font-family-sans-serif: "Arvo";
+@font-size-base: 15.5px;
+@line-height-base: 1.628571429;
+
+@body-bg: lighten(@brown-darker, 80%);
+@text-color: darken(@brown-darker, 10%);
+
+@navbar-height: 72px;
+@navbar-margin-bottom: 0;
+
+@navbar-inverse-bg: @brown-darker;
+@navbar-inverse-color: orange;
+
+@navbar-inverse-brand-color: orange;
+@navbar-inverse-brand-hover-color: darken(@navbar-inverse-brand-color, 20%);
+
+@navbar-inverse-link-color: lighten(orange, 80%);
+@navbar-inverse-link-hover-color: @navbar-inverse-brand-color;
+@navbar-inverse-link-hover-bg: transparent;
+@navbar-inverse-link-active-bg: transparent;
+
+@navbar-inverse-toggle-hover-bg: @brown;
+@navbar-inverse-toggle-border-color: @brown;
+@navbar-inverse-toggle-icon-bar-bg: orange;
+
+@link-color: @text-color;
+@link-hover-color: @link-color;
+
+@border-radius-base: 3px;
+
+@page-header-border-color: @navbar-inverse-bg;
+
+@modal-backdrop-opacity: 0.9;

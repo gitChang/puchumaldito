@@ -1,0 +1,100 @@
+<nav class="header navbar navbar-inverse navbar-static-top" id="top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" 
+                    class="navbar-toggle collapsed all-trans" 
+                    data-toggle="collapse" 
+                    data-target="#navbar-collapse-items">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand color-trans" href="<%= root_path %>" style="font-family: 'Rock Salt'">
+                Puchu Maldito
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-items">
+            <% if action_name != "show" %>
+                <ul class="nav navbar-nav">
+                    <% @categories.each do |category| %>
+                        <li>
+                            <a class="<%= activo category %> color-trans" href="<%= categorize_path(category.downcase) %>">
+                                <%= category %>
+                            </a>
+                        </li>
+                    <% end %>
+                </ul>
+            <% end %>
+            <% if action_name == "show" %>
+                <ul class="social-share nav navbar-nav">
+                    <li>
+                        <a class="color-trans" 
+                           href="https://twitter.com/share"
+                           data-url="<%= request.url %>" 
+                           target="_blank">
+                            tweet &nbsp;<i class="fa fa-twitter fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="color-trans" 
+                           href="https://plus.google.com/share?url=<%= request.url %>"
+                           target="_blank">
+                            share &nbsp;<i class="fa fa-google-plus fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="color-trans" 
+                           href="http://pinterest.com/pin/create/link/?url=<%= request.url %>"
+                           target="_blank">
+                            pin it! &nbsp;<i class="fa fa-pinterest fa-lg"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="color-trans" 
+                           href="https://www.facebook.com/sharer/sharer.php?u=<%= request.url %>"
+                           target="_blank">
+                            share &nbsp;<i class="fa fa-facebook fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+            <% end %>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a 
+                        class="color-trans" 
+                        id="launch-se" 
+                        href="javascript:void(0);">
+                        <i class="fa fa-search fa-lg"></i>
+                    </a>
+                </li>
+            </ul>
+        </div> <!-- end of navbar-collapse-items -->       
+    </div>
+</nav>
+
+<div class="modal fade" id="modal-search">
+    <div class="modal-dialog">
+        <div class="search-mismo col-md-12" style="margin-top:100px;">
+            <form accept-charset="UTF-8" 
+                  name="form-se"
+                  role="search"
+                  method="GET">
+                <input name="utf8" type="hidden" value="&#x2713;">
+                <div class="form-group has-warning">
+                    <input name="keyword" 
+                           type="text" 
+                           class="form-control input-block"
+                           placeholder="Search..."
+                           autocomplete="off"
+                           maxlength="30" 
+                           required>
+                    <i class="fa fa-search fa-lg"></i>
+                </div>
+                <div class="candidates"></div>
+            </form>
+        </div>
+    </div>
+</div>

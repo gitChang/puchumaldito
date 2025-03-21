@@ -1,0 +1,45 @@
+@import "bootstrap_and_overrides.css.less";
+@import "custom-colors";
+
+.header {
+  .nav.navbar-nav li a.active, p.navbar-text a :hover {
+    color: @navbar-inverse-link-hover-color;
+  }
+
+  p.navbar-text a { color: @navbar-inverse-link-color; }
+}
+
+.search-mismo {
+	position: relative;
+
+	form input { padding-left: 36px; }
+
+	i.fa-search { 
+		position: absolute;
+		left: 26px;
+		top: 11px;
+		color: darken(@gray-lighter, 15%);
+	}
+
+	.candidates {
+		color: white;
+
+		.candidate { 
+			text-align: center; 
+			padding: 10px; 
+			margin-bottom: 2px;
+			background-color: @gray-dark;
+
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			-o-border-radius: 2px;
+			border-radius: 2px;
+		}
+
+		a { 
+			color: white;
+			text-decoration: none;
+			&:hover { color: orange; } 
+		}
+	}
+}

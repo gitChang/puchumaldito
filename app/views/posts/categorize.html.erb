@@ -1,0 +1,25 @@
+<div class="categorized container-fluid">
+    <div class="container">
+        <div class="row animated bounceInDown">
+            <div class="col-lg-8">
+                <div class="alert alert-info">
+                    articles under <%= params[:category].titleize %> category.
+                </div>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-lg-8">
+                <% @members.each do |member| %>
+                    <a class="post-item color-trans" href="<%= detailed_path(member.title.parameterize) %>">
+                        <h3><%= member.title %></h3>
+                        <p><%= member.description %></p>
+                    </a>
+                <% end %>
+                <div class="page-wrap y-offset-50">
+                    <%= will_paginate @members %>
+                </div>
+            </div>
+        </div>
+        <%= render partial: 'partials/top_scroll' %>
+    </div>
+</div>

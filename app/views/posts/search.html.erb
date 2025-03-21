@@ -1,0 +1,22 @@
+<div class="search container-fluid">
+    <div class="container">
+        <div class="row animated bounceInDown">
+            <div class="col-lg-8">
+                <div class="alert alert-info">
+                    <%= search_notify %>
+                </div>
+            </div>
+        </div>
+        <div class="row content">
+            <div class="col-lg-8">
+                <% @candidates.each do |candidate| %>
+                    <a class="post-item color-trans" href="<%= detailed_path(candidate.title.parameterize) %>">
+                        <h3><%= candidate.title %></h3>
+                        <p><%= candidate.description %></p>
+                    </a>
+                <% end %>
+            </div>
+        </div>
+        <%= render partial: 'partials/top_scroll' %>
+    </div>
+</div>

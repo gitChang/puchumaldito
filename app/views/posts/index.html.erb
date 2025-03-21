@@ -1,0 +1,18 @@
+<div class="index container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 content">
+                <% @posts.each do |post| %>
+                    <a class="post-item all-trans" href="<%= detailed_path(post.title.parameterize) %>">
+                        <h3><%= post.title %></h3>
+                        <p><%= post.description %></p>
+                    </a>
+                <% end %>
+                <div class="page-wrap y-offset-50">
+                    <%= will_paginate @posts %>
+                </div>
+            </div>
+        </div>
+        <%= render partial: 'partials/top_scroll' %>
+    </div>
+</div>
